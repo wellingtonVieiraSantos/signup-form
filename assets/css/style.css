@@ -4,6 +4,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 :root{
@@ -12,10 +13,11 @@
     --color-bg: rgba(245, 245, 245);
     --color-border: rgba(0, 0, 0, 0.05);
     --color-font: rgb(88, 88, 88);
-    --color-bg-button: rgb(128, 128, 128, .1);
-    --color-bg-button-active: rgba(128, 128, 128, 0.5);
+    --color-bg-button: rgb(128, 128, 128, .3);
+    --color-bg-button-active: rgba(128, 128, 128, 0.7);
+    --color-details: purple;
 
-    --margin-wrapper: 2.5vh;
+    --marginY-wrapper: 2.5vh;
 }
 
 body{
@@ -23,19 +25,20 @@ body{
 }
 
 .wrapper{
-    height: calc(100vh - var(--margin-wrapper) * 2);
+    height: calc(100vh - var(--marginY-wrapper) * 2);
     display: flex;
     justify-content: center;
     align-items: center;
     background-image: linear-gradient(to right, var(--color-bg-secondary) 50%, var(--color-bg) 50%);
-    margin: var(--margin-wrapper) 0;
+    margin: var(--marginY-wrapper) auto;
+    text-align: center;
 }
 
 form{
-    width: max(30%, 300px);
-    margin: 0 auto;
+    position: relative;
+    width: max(25%, 300px);
     padding: 20px;
-    border: 1px solid var(--color-border);
+    border: none;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -43,8 +46,37 @@ form{
     background-color: var(--color-bg);
 }
 
+form::before{
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 80px;
+    top: 75%;
+    left: -2px;
+    transition: top, opacity;
+    transition-duration: .5s;
+    transition-timing-function: ease;
+    background: linear-gradient(to top, transparent, var(--color-bg), transparent);
+    opacity: 0;
+    z-index: 100;
+}
+
+form:hover::before{
+    opacity: 1;
+    top: 25%;
+}
+
 h1{
-    margin: 10px auto;
+    margin: 15px 0;
+    width: 100%;
+    font-size: 25px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+span{
+    font-size: 10px;
+    font-weight: 100;
+    margin-left: 10px;
 }
 
 input{
@@ -54,6 +86,7 @@ input{
     border: 1px solid var(--color-border);
     outline: none;
     box-shadow: 2px 2px 0 var(--color-shadow);
+    background-color: var(--color-bg);
 }
 
 input[type='submit']{
@@ -66,6 +99,7 @@ input[type='submit']{
     transition: font-size .1s linear;
     transition: background-color .2s linear;
     color: var(--color-font);
+    font-weight: 600;
 }
 
 input[type='submit']:active{
@@ -73,7 +107,6 @@ input[type='submit']:active{
     background-color: var(--color-bg-button-active);
     box-shadow: inset 2px 2px 0 var(--color-shadow);
     transform: translate(2px, 2px);
-    
 }
 
 .input-wrapper{
@@ -82,7 +115,7 @@ input[type='submit']:active{
 
 .name-label, .password-label, .confirmPassword-label, .email-label{
     position: absolute;
-    top: 25px;
+    top: 30px;
     left: 15px;
     color: var(--color-font);
     transition: all .3s ease-in-out;
@@ -92,7 +125,7 @@ input[type='submit']:active{
 #password:focus-visible + .password-label, #password:valid + .password-label,
 #confirmPassword:focus-visible + .confirmPassword-label, #confirmPassword:valid + .confirmPassword-label,
 #email:focus-visible + .email-label, #email:valid + .email-label{
-    transform: translateY(-18px) scale(.9);
+    transform: translate(-10px, -25px) scale(.8);
 }
 
 #name:focus-visible, #name:valid,
