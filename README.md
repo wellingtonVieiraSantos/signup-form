@@ -7,3 +7,5 @@
 - HTML
 - CSS
 - JS puro
+
+![form example](./assets/img/form.png)
