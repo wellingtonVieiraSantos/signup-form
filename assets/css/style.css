@@ -12,10 +12,11 @@
     --color-shadow: rgba(0, 0, 0, 0.7);
     --color-bg: rgba(245, 245, 245);
     --color-border: rgba(0, 0, 0, 0.05);
+    --color-pop-up: rgba(0, 0, 0, 0.02);
     --color-font: rgb(88, 88, 88);
     --color-bg-button: rgb(128, 128, 128, .3);
     --color-bg-button-active: rgba(128, 128, 128, 0.7);
-    --color-details: purple;
+    --color-details: goldenrod;
 
     --marginY-wrapper: 2.5vh;
 }
@@ -42,7 +43,7 @@ form{
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-shadow: 4px 4px 0 var(--color-shadow);
+    box-shadow: 4px 2px 0 var(--color-shadow);
     background-color: var(--color-bg);
 }
 
@@ -50,15 +51,14 @@ form::before{
     content: '';
     position: absolute;
     width: 1px;
-    height: 80px;
+    height: 60px;
     top: 75%;
     left: -2px;
     transition: top, opacity;
     transition-duration: .5s;
     transition-timing-function: ease;
-    background: linear-gradient(to top, transparent, var(--color-bg), transparent);
+    background: linear-gradient(to top, transparent, var(--color-details), transparent);
     opacity: 0;
-    z-index: 100;
 }
 
 form:hover::before{
@@ -77,16 +77,23 @@ span{
     font-size: 10px;
     font-weight: 100;
     margin-left: 10px;
+    margin-right: 10px;
 }
 
 input{
     margin: 15px auto;
     padding: 15px;
+    padding-left: 40px;
+    padding-right: 40px;
     font-size: 15px;
     border: 1px solid var(--color-border);
     outline: none;
     box-shadow: 2px 2px 0 var(--color-shadow);
     background-color: var(--color-bg);
+}
+
+#password, #confirmPassword{
+    letter-spacing: 5px;
 }
 
 input[type='submit']{
@@ -113,10 +120,26 @@ input[type='submit']:active{
     position: relative;
 }
 
+.input-wrapper span:nth-child(1){
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: default;
+}
+
+.input-wrapper span:nth-child(2){
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
 .name-label, .password-label, .confirmPassword-label, .email-label{
     position: absolute;
     top: 30px;
-    left: 15px;
+    left: 40px;
     color: var(--color-font);
     transition: all .3s ease-in-out;
 }
@@ -135,3 +158,45 @@ input[type='submit']:active{
     transition: all .5s ease-in-out;
     border-top: 1px solid var(--color-bg);
 }
+
+.pop-up{
+    width: 270px;
+    position: absolute;
+    right: -300px;
+    top: 0;
+    transform: translate(0, -50%);
+    background-color: var(--color-pop-up);
+    box-shadow: 2px 2px 0 var(--color-shadow);
+    padding: 5px;
+    text-align: left;
+    display: none;
+}
+
+.pop-up h2{
+    font-size: 16px;
+    text-align: center;
+    margin: 10px auto;
+}
+
+.pop-up ul{
+    list-style: '- ';
+    list-style-position: inside;
+}
+
+.pop-up ul li{
+    padding: 5px 0;
+}
+
+.triangle{
+    position: absolute;
+    right: -30px;
+    bottom: 20px;
+    width: 0; 
+    height: 0; 
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent; 
+    border-right: 15px solid var(--color-pop-up); 
+    display: none;
+    
+}
+
