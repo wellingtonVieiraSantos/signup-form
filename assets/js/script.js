@@ -1,12 +1,13 @@
-const icon = Array.from(document.querySelectorAll('.icon-password'))
-const password = Array.from(document.querySelectorAll('.password-input'))
+const icons = Array.from(document.querySelectorAll('.icon-password'))
+const passwords = Array.from(document.querySelectorAll('.password-input'))
+const formSend = document.querySelector('.form-send')
 
 const rules = [
     'at least 8 characters.',
     'at least one uppercase letter.',
     'at least one lowercase letter.',
     'at least one special character.',
-    'Passwords must match.'
+    'passwords must match.'
 ]
 
 const createElementDom = (elemento, msg = null) =>{
@@ -15,44 +16,54 @@ const createElementDom = (elemento, msg = null) =>{
     return elementoDom
 }
 
-icon.map(i => {
-    i.addEventListener('click', ()=>{
+//toggle input type password/text
+icons.map(icon => {
+    icon.addEventListener('click', ()=>{
 
-        i.innerText = i.innerText.includes('visibility_off') ? 'visibility' : 'visibility_off'
+        icon.innerText = icon.innerText.includes('visibility_off') ? 'visibility' : 'visibility_off'
 
-        i.innerText.includes('visibility_off') ? 
-        i.nextElementSibling.setAttribute('type', 'password') :
-        i.nextElementSibling.setAttribute('type', 'text')
+        icon.nextElementSibling.type = icon.nextElementSibling.type === 'password' ? 'text' : 'password'
     })
 })
 
-password.map(pass => {
-
-    const popUp = createElementDom('div')
-    const h2 = createElementDom('h2', 'It must contain.')
+//create rules for password
+passwords.map((password, index) => {
+    const divRules = createElementDom('div')
+    divRules.classList.add('div-rules')
+    
     const ul = createElementDom('ul')
 
-    for(let i = 0; i < rules.length; i++){  
-        const li = createElementDom('li', rules[i])    
-        ul.appendChild(li)
+    switch (index){ 
+        case 0:
+            for(let i = 0; i < rules.length - 1; i++){  
+                const li = createElementDom('li', rules[i])   
+                ul.appendChild(li)
+            }
+            break
+        case 1:
+            const li = createElementDom('li', rules[rules.length - 1])
+            ul.appendChild(li)
     }
+        
+    divRules.appendChild(ul)
 
-    popUp.classList.add('pop-up')
-    popUp.appendChild(h2)
-    popUp.appendChild(ul)
-
-    const divPass = pass.parentNode
-    divPass.appendChild(popUp)
-
-    pass.addEventListener('focus', () => {
-        popUp.style.display = 'block'
-        pass.nextElementSibling.nextElementSibling.style.display = 'block'
-    })
-
-    pass.addEventListener('blur', () =>{
-        popUp.style.display = 'none'
-        pass.nextElementSibling.nextElementSibling.style.display = 'none'
-    })
+    const parent = password.parentNode.parentNode
+    parent.insertBefore(divRules, password.parentNode.nextSibling)
 })
 
+formSend.addEventListener('submit', e => {
+    e.preventDefault()
 
+    const name = document.querySelector('#name').value
+    const email = document.querySelector('#email').value
+    const password = document.querySelector('#password').value
+    const confirmPassword = document.querySelector('#confirmPassword').value
+
+    const dataForm = {
+        name,
+        email,
+        password
+    }
+
+    console.log(dataForm);
+})

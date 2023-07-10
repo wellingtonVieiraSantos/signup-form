@@ -10,21 +10,20 @@
 </head>
 <body>
     <div class="wrapper">
-        <form >
-            <div class="circle"></div>
+        <form class="form-send">
             <h1>Register<span>for newsletter</span></h1>
-            <div class="name input-wrapper" >
+            <div class="name input-wrapper">
                 <span class="material-symbols-outlined">
                     person
                 </span>
-                <input type="text" id="name" required autocomplete="no">
+                <input type="text" id="name" autocomplete="no" required>
                 <label for="name" class="name-label">Name</label>
             </div>
             <div class="email input-wrapper">
                 <span class="material-symbols-outlined">
                     mail
                 </span>
-                <input type="text" id="email" required>
+                <input type="text" id="email" autocomplete="no" required>
                 <label for="email" class="email-label">E-mail</label>
             </div>
             <div class="password input-wrapper">
@@ -36,7 +35,6 @@
                 </span>
                 <input type="password" id="password" class="password-input" required autocomplete="no">
                 <label for="password" class="password-label">Password</label>
-                <div class="triangle"></div>
             </div>
             <div class="confirmPassword input-wrapper">
                 <span class="material-symbols-outlined">
@@ -47,9 +45,8 @@
                 </span>
                 <input type="password" id="confirmPassword" class="password-input" required autocomplete="no">
                 <label for="confirmPassword" class="confirmPassword-label">Confirm Password</label>
-                <div class="triangle"></div>
             </div>
-            <input type="submit" value="Sign Up">
+            <input type="submit" class="submit" value="Sign Up">
         </form>
     </div>      
 </body>
