@@ -9,3 +9,5 @@
 - JavaScript puro
 
 ![form example](./assets/img/form.png)
+![form example completed](./assets/img/formCompleted.png)
+![form example pupup](./assets/img/popup.png)
