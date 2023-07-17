@@ -1,6 +1,6 @@
 # Sign Up Form
 
-## Formulário simples com validação no front-end
+## Formulário simples com validação no front-end, usando Regex(expressões regulares)
 
 ### Técnologia utilizadas
 
