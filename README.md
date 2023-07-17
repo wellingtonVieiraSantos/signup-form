@@ -6,6 +6,6 @@
 
 - HTML
 - CSS
-- JS puro
+- JavaScript puro
 
 ![form example](./assets/img/form.png)

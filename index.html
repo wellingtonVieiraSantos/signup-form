@@ -16,16 +16,18 @@
                 <span class="material-symbols-outlined">
                     person
                 </span>
-                <input type="text" id="name" autocomplete="no" required>
+                <input type="text" id="name" class="input" autocomplete="off">
                 <label for="name" class="name-label">Name</label>
             </div>
+            <small class="error-name"></small>
             <div class="email input-wrapper">
                 <span class="material-symbols-outlined">
                     mail
                 </span>
-                <input type="text" id="email" autocomplete="no" required>
+                <input type="text" id="email" class="input" autocomplete="off">
                 <label for="email" class="email-label">E-mail</label>
             </div>
+            <small class="error-email"></small>
             <div class="password input-wrapper">
                 <span class="material-symbols-outlined">
                     lock
@@ -33,9 +35,11 @@
                 <span class="material-symbols-outlined icon-password">
                     visibility_off
                 </span>
-                <input type="password" id="password" class="password-input" required autocomplete="no">
+                <input type="password" id="password" class="password-input input"  autocomplete="off">
                 <label for="password" class="password-label">Password</label>
             </div>
+            <small class="error-password"></small>
+            <div class="div-rules-pass"></div>
             <div class="confirmPassword input-wrapper">
                 <span class="material-symbols-outlined">
                     lock_open_right
@@ -43,11 +47,20 @@
                 <span class="material-symbols-outlined icon-password">
                     visibility_off
                 </span>
-                <input type="password" id="confirmPassword" class="password-input" required autocomplete="no">
+                <input type="password" id="confirmPassword" class="password-input input" autocomplete="no">
                 <label for="confirmPassword" class="confirmPassword-label">Confirm Password</label>
             </div>
+            <small class="error-confirmPassword"></small>
+            <div class="div-rules-confirmPass"></div>
             <input type="submit" class="submit" value="Sign Up">
         </form>
+        <dialog class="welcome">
+            <div class='wrapper-dialog'>
+                <h1>Thanks for signing up.</h1>
+                <p>Welcome,<span class="nick-name"></span></p>
+                <button>Close</button>
+            </div>
+        </dialog>
     </div>      
 </body>
 </html>

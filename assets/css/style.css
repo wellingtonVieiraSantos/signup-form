@@ -79,7 +79,7 @@ span{
     margin: 0 10px;
 }
 
-input{
+input, .wrapper-dialog > button{
     margin: 15px auto;
     padding: 15px 40px;
     font-size: 15px;
@@ -93,7 +93,7 @@ input{
     letter-spacing: 5px;
 }
 
-input[type='submit']{
+input[type='submit'], .wrapper-dialog > button{
     width: 120px;
     height: 50px;
     padding: 10px;
@@ -106,7 +106,7 @@ input[type='submit']{
     font-weight: 600;
 }
 
-input[type='submit']:active{
+input[type='submit']:active, .wrapper-dialog > button:active{
     font-size: 15px;
     background-color: var(--color-bg-button-active);
     box-shadow: none;
@@ -141,35 +141,73 @@ input[type='submit']:active{
     transition: all .3s ease-in-out;
 }
 
-#name:focus-visible + .name-label, #name:valid + .name-label,
-#password:focus-visible + .password-label, #password:valid + .password-label,
-#confirmPassword:focus-visible + .confirmPassword-label, #confirmPassword:valid + .confirmPassword-label,
-#email:focus-visible + .email-label, #email:valid + .email-label{
+#name:focus-visible + .name-label, #name.valid + .name-label,
+#password:focus-visible + .password-label, #password.valid + .password-label,
+#confirmPassword:focus-visible + .confirmPassword-label, #confirmPassword.valid + .confirmPassword-label,
+#email:focus-visible + .email-label, #email.valid + .email-label{
     transform: translate(-10px, -25px) scale(.8);
 }
 
-#name:focus-visible, #name:valid,
-#password:focus-visible, #password:valid,
-#confirmPassword:focus-visible, #confirmPassword:valid,
-#email:focus-visible, #email:valid{
+#name:focus-visible, #name.valid,
+#password:focus-visible, #password.valid,
+#confirmPassword:focus-visible, #confirmPassword.valid,
+#email:focus-visible, #email.valid{
     transition: all .5s ease-in-out;
     border-top: 1px solid var(--color-bg);
 }
 
-.div-rules{
+.div-rules-pass, .div-rules-confirmPass{
     width: 284px;
     margin: 0 auto;
     text-align: left;
 }
 
-.div-rules ul{
+ul{
     list-style: '* ';
     list-style-position: inside;
 }
 
-.div-rules ul li{
+ul li{
     padding: 1px 4px;
     font-size: .7rem;
 }
 
+small{
+    width: 284px;
+    color: red;
+    margin-bottom: 5px;
+    text-align: right;
+}
+
+.welcome{
+    width: 80%;
+    height: 80%;
+    background-color: var(--color-bg);
+    border: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.welcome::backdrop{
+    background-color: rgba(0,0,0, .5);
+}
+
+.wrapper-dialog{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.wrapper-dialog p{
+    margin: 30px 0;
+}
+
+.wrapper-dialog span{
+    font-size: 18px;
+    color: var(--color-font);
+}
 
